@@ -57,6 +57,8 @@ int ft_pa(t_list *empty, t_list *lst)
  //   if (!(tmp = malloc(sizeof(t_list))))
  //       return (0);
  //   lst = tmp;
+    while (lst->prec)
+        lst = lst->prec;
     tmp = (lst) ? lst : 0;
     ft_lstadd_front(&lst, ft_lstnew(empty, empty->value));
     printf("empty %d\n", lst);
