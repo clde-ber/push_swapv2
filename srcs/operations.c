@@ -57,10 +57,14 @@ int ft_pa(t_list *empty, t_list *lst)
  //   if (!(tmp = malloc(sizeof(t_list))))
  //       return (0);
  //   lst = tmp;
+    tmp = (lst) ? lst : 0;
     ft_lstadd_front(&lst, ft_lstnew(empty, empty->value));
-    lst->prec = 0;
+    printf("empty %d\n", lst);
+        printf("empty next %d\n", lst->next);
+        printf("empty prec %d\n", lst->prec);
     while (empty)
         empty = empty->next;
+    ft_lstdelone(empty);
     while (lst->next)
     {
         printf("empty %d\n", lst);
@@ -68,8 +72,8 @@ int ft_pa(t_list *empty, t_list *lst)
         printf("empty prec %d\n", lst->prec);
         tmp = lst;
         lst = lst->next;
+        lst->prec = tmp;
     }
-    lst->prec = tmp;
  /*    while (lst)
     {
         printf("hey%d\n", lst);
@@ -104,11 +108,10 @@ t_list *ft_pb(t_list *empty, t_list *lst)
         printf("empty %d\n", empty);
         printf("empty next %d\n", empty->next);
         printf("empty prec %d\n", empty->prec);
-        empty->prec = tmp;
         tmp = empty;
         empty = empty->next;
+        empty->prec = tmp;
     }
-    empty->prec = tmp;
  /*    while (lst)
     {
         printf("hey%d\n", lst);
