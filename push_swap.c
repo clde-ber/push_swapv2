@@ -21,13 +21,13 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
     ft_rra(empty, lst);
     if (lst > lst->next)
         ft_sa(empty, lst);
-    empty = ft_pb(empty, lst);
+    ft_pb(empty, lst);
     if (empty && empty < empty->next)
         ft_rrr(empty, lst);
     else
         ft_rra(empty, lst);
-    lst = ft_pa(empty, lst);
-    lst = ft_pa(empty, lst);
+    ft_pa(empty, lst);
+    ft_pa(empty, lst);
  //   while (lst->prec)
  //       lst = lst->prec;
     return (0);
@@ -77,10 +77,10 @@ int main(int ac, char **av)
         lst = lst->next;
     }*/
     push_swap(empty, lst, 0, ac - 1);
-/*    while (lst)
+    while (lst)
     {
         printf("lst->value %d\n", lst->value);
         lst = lst->next;
-    }*/
+    }
     return (0);
 }
