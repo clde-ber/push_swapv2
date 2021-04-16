@@ -178,7 +178,6 @@ int rr(t_list *empty, t_list *lst)
 /*void	ps_ft_rev_rotate_a(t_list *lst_a, t_list *lst_b)
 {
 	t_node	*elem;
-
 	if (lst_a->head != NULL && lst_a->head != lst_a->tail)
 	{
 		elem = lst_a->head;
@@ -196,6 +195,7 @@ int ft_rra(t_list *empty, t_list *lst)
 {
     t_list *tmp;
 
+    tmp = lst;
     while (lst->next)
     {
         printf("heyhye%d\n", lst);
@@ -203,23 +203,18 @@ int ft_rra(t_list *empty, t_list *lst)
         printf("heyhey_prec%d\n", lst->prec);
         lst = lst->next;
     }
-    tmp = lst;
-    lst = lst->next;
-/*    printf("heyhye%d\n", lst);
+    printf("heyhye%d\n", lst);
     printf("heyhey_next%d\n", lst->next);
-    printf("heyhey_prec%d\n", lst->prec);*/
-    ft_lstdelone(lst);
-    ft_lstadd_front(&lst, tmp);
-//    while (tmp->next)
-//        tmp = tmp->next;
-//    tmp->next = 0;
-    while (lst)
+    printf("heyhey_prec%d\n", lst->prec);
+    ft_lstadd_front(&tmp, lst);
+    ft_lstdelone(lst->next->next->next);
+    while (tmp)
     {
-        printf("la%d\n", lst);
-        printf("la_next%d\n", lst->next);
-        printf("la_prec%d\n", lst->prec);
-         printf("la_value%d\n", lst->value);
-        lst = lst->next;
+        printf("la%d\n", tmp);
+        printf("la_next%d\n", tmp->next);
+        printf("la_prec%d\n", tmp->prec);
+         printf("la_value%d\n", tmp->value);
+        tmp = tmp->next;
     }
     write(1, "rra\n", 4);
     return (0);
