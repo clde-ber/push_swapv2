@@ -28,9 +28,13 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
         ft_rra(empty, lst);
     ft_pa(empty, lst);
     ft_pa(empty, lst);
- //   while (lst->prec)
- //       lst = lst->prec;
-    return (0);
+    lst = lst->next;
+    while (lst)
+    {
+        printf("lst->value %d\n", lst);
+        lst = lst->prec;
+    }
+    return (lst);
 }
 
 t_list *create_list(t_list *lst, int value, int i, char **av)
@@ -77,6 +81,9 @@ int main(int ac, char **av)
         lst = lst->next;
     }*/
     push_swap(empty, lst, 0, ac - 1);
+    lst = lst->next;
+    while (lst->prec)
+        lst = lst->prec;
     while (lst)
     {
         printf("lst->value %d\n", lst->value);

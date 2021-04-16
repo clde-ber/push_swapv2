@@ -8,19 +8,20 @@ int ft_sa(t_list *empty, t_list *lst)
         return (1);
     while (lst->prec)
         lst = lst->prec;
-    tmp = lst;
-    tmp->prec = 0;
-    printf("lst 1 %d\n", lst);
-     printf("lst 1 %d\n", lst->prec);
-      printf("lst 1 %d\n", lst->next);
-      printf("lst 1 %d\n", lst->value);
-    lst = lst->next;
+    tmp = lst->next;
+    tmp->prec = lst;
+    printf("lst 1 %d\n", tmp);
+     printf("lst 1 %d\n", tmp->prec);
+      printf("lst 1 %d\n", tmp->next);
+      printf("lst 1 %d\n", tmp->value);
+    lst->next = tmp;
+    lst->prec = 0;
 //    lst->next = 0;
 //    tmp = lst->prec;
     printf("lst 2 %d\n", lst);
     printf("lst 2 %d\n", lst->prec);
     printf("lst 2 %d\n", lst->next);
-    printf("lst 1 %d\n", lst->value);
+    printf("lst 2 %d\n", lst->value);
     write(1, "sa\n", 3);
     return (0);
 }
@@ -110,6 +111,7 @@ t_list *ft_pb(t_list *empty, t_list *lst)
         printf("empty %d\n", empty);
         printf("empty next %d\n", empty->next);
         printf("empty prec %d\n", empty->prec);
+        printf("empty VALUE %d\n", empty->value);
         tmp = empty;
         empty = empty->next;
         empty->prec = tmp;
@@ -124,6 +126,7 @@ t_list *ft_pb(t_list *empty, t_list *lst)
     printf("empty %d\n", empty);
     printf("empty next %d\n", empty->next);
     printf("empty prec %d\n", empty->prec);
+     printf("empty VALUE %d\n", empty->value);
     write(1, "pb\n", 3);
     return (empty);
 }
