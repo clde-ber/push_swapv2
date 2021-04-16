@@ -196,7 +196,6 @@ int ft_rra(t_list *empty, t_list *lst)
 {
     t_list *tmp;
 
-    tmp = lst;
     while (lst->next)
     {
         printf("heyhye%d\n", lst);
@@ -204,14 +203,16 @@ int ft_rra(t_list *empty, t_list *lst)
         printf("heyhey_prec%d\n", lst->prec);
         lst = lst->next;
     }
-    printf("heyhye%d\n", lst);
+    tmp = lst;
+    lst = lst->next;
+/*    printf("heyhye%d\n", lst);
     printf("heyhey_next%d\n", lst->next);
-    printf("heyhey_prec%d\n", lst->prec);
+    printf("heyhey_prec%d\n", lst->prec);*/
+    ft_lstdelone(lst);
     ft_lstadd_front(&lst, tmp);
-    while (tmp->next)
-        tmp = tmp->next;
-    ft_lstdelone(tmp->next);
-    tmp->next = 0;
+//    while (tmp->next)
+//        tmp = tmp->next;
+//    tmp->next = 0;
     while (lst)
     {
         printf("la%d\n", lst);
