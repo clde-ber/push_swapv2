@@ -35,13 +35,13 @@ void	ft_lstdelone(t_list *lst)
 
 	if (lst)
 	{
-		tmp = lst->next;
-		tmp->prec = NULL;
-		lst->value = 0;
+//		tmp = (lst->next) ? lst->next : lst->prec;
+//		tmp->prec = NULL;
+//		lst->value = 0;
         free(lst);
 		lst = NULL;
     }
-	lst = tmp;
+//	lst = tmp;
 }
 
 t_list	*ft_lstnew(t_list *lst, int value)

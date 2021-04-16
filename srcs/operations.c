@@ -194,7 +194,10 @@ int rr(t_list *empty, t_list *lst)
 int ft_rra(t_list *empty, t_list *lst)
 {
     t_list *tmp;
+    t_list *tmp2;
 
+    while (lst->prec)
+        lst = lst->prec;
     tmp = lst;
     while (lst->next)
     {
@@ -203,18 +206,31 @@ int ft_rra(t_list *empty, t_list *lst)
         printf("heyhey_prec%d\n", lst->prec);
         lst = lst->next;
     }
-    printf("heyhye%d\n", lst);
+    lst->prec->next = 0;
+    tmp2 = lst;
+ /*   printf("heyhye%d\n", lst);
     printf("heyhey_next%d\n", lst->next);
-    printf("heyhey_prec%d\n", lst->prec);
-    ft_lstadd_front(&tmp, lst);
-    ft_lstdelone(lst->next->next->next);
-    while (tmp)
+    printf("heyhey_prec%d\n", lst->prec);*/
+    ft_lstadd_front(&lst, tmp2);
+    ft_lstiter(tmp);
+     tmp2->prec = 0;
+     tmp2->next = tmp;
+     tmp->prec = tmp2;
+//     tmp2->next->next = 0;
+     printf("tmp2 %d\n", tmp2);
+      printf("tmp %d\n", tmp);
+//    printf("lstnnnvalue %d\n", lst->next->next->next);
+//    ft_lstdelone(lst);
+    lst = tmp;
+    while (lst->prec)
+        lst = lst->prec;
+    while (lst)
     {
-        printf("la%d\n", tmp);
-        printf("la_next%d\n", tmp->next);
-        printf("la_prec%d\n", tmp->prec);
-         printf("la_value%d\n", tmp->value);
-        tmp = tmp->next;
+        printf("la%d\n", lst);
+        printf("la_next%d\n", lst->next);
+        printf("la_prec%d\n", lst->prec);
+         printf("la_value%d\n", lst->value);
+        lst = lst->next;
     }
     write(1, "rra\n", 4);
     return (0);

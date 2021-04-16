@@ -81,7 +81,7 @@ int main(int ac, char **av)
         lst = lst->next;
     }*/
     push_swap(empty, lst, 0, ac - 1);
-    lst = lst->next;
+//    lst = lst->next;
     while (lst->prec)
         lst = lst->prec;
     while (lst)
