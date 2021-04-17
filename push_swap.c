@@ -33,13 +33,15 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
     if (empty && empty < empty->next)
         ft_rrr(empty, lst);
     else
-        ft_rra(empty, lst);
-    ft_pa(empty, lst);
-    ft_pa(empty, lst);
-    lst = lst->next;
-    while (lst)
+        lst = ft_rra(empty, lst);
+    printf("!!!%d\n", lst);
+    empty = ft_pa(empty, lst);
+    printf("!!!%d\n", empty);
+    empty = ft_pa(empty, lst);
+    printf("!!!%d\n", empty);
+    while (lst->prec)
     {
- //       printf("lst->value %d\n", lst);
+        printf("lst->value %d\n", lst);
         lst = lst->prec;
     }
     return (lst);
