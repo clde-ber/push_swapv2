@@ -29,7 +29,7 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
     printf("2 %d\n", lst->next->value);
     if (lst > lst->next)
         lst = ft_sa(empty, lst);
-    ft_pb(empty, lst);
+    lst = ft_pb(empty, lst);
     if (empty && empty < empty->next)
         ft_rrr(empty, lst);
     else

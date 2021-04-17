@@ -1,27 +1,37 @@
 #include "push_swap.h"
 
+void swap(t_list **a, t_list **b)
+{
+    t_list *tmp;
+
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
 t_list *ft_sa(t_list *empty, t_list *lst)
 {
     t_list *tmp;
+    t_list *tmp2;
+    t_list *tmp3;
 
     if (!(lst || (lst && !lst->next)))
         return (1);
     while (lst->prec)
         lst = lst->prec;
-    tmp = lst->next;
-    tmp->prec = lst;
-/*    printf("lst 1 %d\n", tmp);
-     printf("lst 1 %d\n", tmp->prec);
-      printf("lst 1 %d\n", tmp->next);*/
-      printf("lst 1 %d\n", tmp->value);
-    lst->next = tmp;
-    lst->prec = 0;
+    swap(lst, lst->next);
+//    lst = tmp->prec;
 //    lst->next = 0;
 //    tmp = lst->prec;
 /*    printf("lst 2 %d\n", lst);
     printf("lst 2 %d\n", lst->prec);
     printf("lst 2 %d\n", lst->next);*/
     printf("lst 2 %d\n", lst->value);
+    while (lst->next)
+    {
+        printf("value %d\n", lst->value);
+        lst = lst->next;
+    }
     write(1, "sa\n", 3);
     return (lst);
 }
@@ -105,10 +115,12 @@ t_list *ft_pb(t_list *empty, t_list *lst)
  //       return (0);
     tmp = (empty) ?  empty : 0;
 //    empty = tmp;
-    ft_lstadd_front(&empty, ft_lstnew(lst, lst->value));
 //    while (lst->next)
 //        lst = lst->next;
 //    lst->next->prec = 0;
+    while (lst->prec)
+        lst = lst->prec;
+    ft_lstadd_front(&empty, ft_lstnew(lst, lst->value));
     printf("lst to free value %d\n", lst->value);
     lst->next->prec = 0;
     tmp = lst;
@@ -256,7 +268,7 @@ t_list *ft_rra(t_list *empty, t_list *lst)
     lst = tmp;
     while (lst->prec)
         lst = lst->prec;
-    while (lst)
+    while (lst->next)
     {
     /*    printf("la%d\n", lst);
         printf("la_next%d\n", lst->next);
