@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int ft_sa(t_list *empty, t_list *lst)
+t_list *ft_sa(t_list *empty, t_list *lst)
 {
     t_list *tmp;
 
@@ -23,7 +23,7 @@ int ft_sa(t_list *empty, t_list *lst)
     printf("lst 2 %d\n", lst->next);*/
     printf("lst 2 %d\n", lst->value);
     write(1, "sa\n", 3);
-    return (0);
+    return (lst);
 }
 
 int ft_sb(t_list *empty, t_list *lst)
@@ -67,7 +67,7 @@ int ft_pa(t_list *empty, t_list *lst)
         printf("empty prec %d\n", lst->prec);*/
     while (empty->next)
         empty = empty->next;
-    empty->prec->next = 0;z
+    empty->prec->next = 0;
     ft_lstdelone(empty->next);
     while (lst->next)
     {
@@ -108,7 +108,32 @@ t_list *ft_pb(t_list *empty, t_list *lst)
     ft_lstadd_front(&empty, ft_lstnew(lst, lst->value));
 //    while (lst->next)
 //        lst = lst->next;
+//    lst->next->prec = 0;
+    printf("lst to free value %d\n", lst->value);
     lst->next->prec = 0;
+    tmp = lst;
+    lst = lst->next;
+    ft_lstdelone(tmp);
+/*    while (lst)
+    {
+        printf("lst to free value %d\n", lst->value);
+        printf("lst to free %d\n", lst);
+        printf("lst to free next %d\n", lst->next);
+        printf("lst to free prec%d\n", lst->prec);
+        if (lst->prec == 0)
+            lst->prec = 0;
+        tmp = lst;
+        lst = lst->next;
+        ft_lstdelone(tmp);
+    }*/
+    printf("lst value %d\n", lst->value);
+    printf("lst %d\n", lst);
+    printf("lst to free next %d\n", lst->next);
+    printf("lst to free prec%d\n", lst->prec);
+//   while (lst->prec)
+//    {
+//        lst = lst->prec;
+//    }
     while (empty->next)
     {
         printf("empty value %d\n", empty->value);
@@ -131,7 +156,7 @@ t_list *ft_pb(t_list *empty, t_list *lst)
     printf("empty prec %d\n", empty->prec);*/
      printf("empty value %d\n", empty->value);
     write(1, "pb\n", 3);
-    return (empty);
+    return (lst);
 }
 
 int ft_ra(t_list *empty, t_list *lst)
@@ -194,13 +219,17 @@ int rr(t_list *empty, t_list *lst)
 	}
 }*/
 
-int ft_rra(t_list *empty, t_list *lst)
+t_list *ft_rra(t_list *empty, t_list *lst)
 {
     t_list *tmp;
     t_list *tmp2;
 
     while (lst->prec)
+    {
+        printf("LST %d\n", lst);
+     printf("LST %d\n", lst->prec);
         lst = lst->prec;
+    }
     tmp = lst;
     while (lst->next)
     {
@@ -236,7 +265,7 @@ int ft_rra(t_list *empty, t_list *lst)
         lst = lst->next;
     }
     write(1, "rra\n", 4);
-    return (0);
+    return (lst);
 }
 
 int ft_rrb(t_list *empty, t_list *lst)

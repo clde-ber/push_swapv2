@@ -20,15 +20,15 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
     printf("1 %d\n", lst->value);
     printf("2 %d\n", lst->next->value);
     if (lst > lst->next)
-        ft_sa(empty, lst);
-    empty = ft_pb(empty, lst);
-    ft_rra(empty, lst);
+        lst = ft_sa(empty, lst);
+    lst = ft_pb(empty, lst);
+    lst = ft_rra(empty, lst);
     while (lst->prec)
         lst = lst->prec;
     printf("1 %d\n", lst->value);
     printf("2 %d\n", lst->next->value);
     if (lst > lst->next)
-        ft_sa(empty, lst);
+        lst = ft_sa(empty, lst);
     ft_pb(empty, lst);
     if (empty && empty < empty->next)
         ft_rrr(empty, lst);

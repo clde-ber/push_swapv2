@@ -38,7 +38,8 @@ void	ft_lstdelone(t_list *lst)
 //		tmp = (lst->next) ? lst->next : lst->prec;
 //		tmp->prec = NULL;
 //		lst->value = 0;
-        free(lst);
+//		lst->next->prec = 0;
+		free(lst);
 		lst = NULL;
     }
 //	lst = tmp;
