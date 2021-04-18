@@ -15,36 +15,57 @@ rrr :rra and rrb at the same time.
 
 int push_swap(t_list *empty, t_list *lst, int i, int j)
 {
-    while (lst->prec)
-        lst = lst->prec;
     printf("1 %d\n", lst->value);
     printf("2 %d\n", lst->next->value);
-    if (lst > lst->next)
+    if (lst < lst->next)
         lst = ft_sa(empty, lst);
-    lst = ft_pb(empty, lst);
     lst = ft_rra(empty, lst);
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    lst = ft_rra(empty, lst);
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    lst = ft_rra(empty, lst);
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    lst = ft_pa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
     printf("1 %d\n", lst->value);
     printf("2 %d\n", lst->next->value);
-    if (lst > lst->next)
+    if (lst < lst->next)
         lst = ft_sa(empty, lst);
-    lst = ft_pb(empty, lst);
-    if (empty && empty < empty->next)
-        ft_rrr(empty, lst);
-    else
-        lst = ft_rra(empty, lst);
+    lst = ft_rra(empty, lst);
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    lst = ft_rra(empty, lst);
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
+    lst = ft_pa(empty, lst);
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
+    lst = ft_pa(empty, lst);
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
     printf("!!!%d\n", lst);
-    empty = ft_pa(empty, lst);
+    empty = ft_pb(empty, lst);
     printf("!!!%d\n", empty);
-    empty = ft_pa(empty, lst);
-    printf("!!!%d\n", empty);
+    empty = ft_pb(empty, lst);
     while (lst->prec)
     {
-        printf("lst->value %d\n", lst);
+        printf("lst->value %d\n", lst->value);
         lst = lst->prec;
     }
-    return (lst);
+    while (lst->next)
+    {
+        printf("lst->value %d\n", lst->value);
+        lst = lst->next;
+    }
+    return (0);
 }
 
 t_list *create_list(t_list *lst, int value, int i, char **av)
