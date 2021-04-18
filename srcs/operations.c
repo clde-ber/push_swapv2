@@ -79,21 +79,26 @@ t_list *ft_pb(t_list *empty, t_list *lst)
 
     if (!(empty))
     {
-         write(1, "pb\n", 3);
+        write(1, "pb\n", 3);
         return (lst);
     }
-    tmp = (lst) ? lst : 0;
-        while (empty->prec)
-            empty = empty->prec;
-        tmp = empty;
+    tmp = (lst->next) ? lst : 0;
+    while (empty->next)
         empty = empty->next;
-        empty->prec = 0;
-        ft_lstadd_front(&lst, tmp);
-        printf("lst to free value %d\n", tmp->value);
-        tmp = lst;
-        lst->prec = 0;
-        lst = lst->next;
-        tmp->next = lst;
+    tmp3 = empty->prec;
+    tmp2 = empty;
+    tmp2->prec = tmp;
+    tmp2->next = 0;
+    empty = tmp3;
+    empty->next = 0;
+    ft_lstadd_front(&lst, tmp2);
+    ft_lstiter(lst);
+    lst->prec = tmp;
+    lst->next = 0;
+//    printf("lst to free value %d\n", tmp->value);
+   printf("empty VALUE %d\n", lst);
+   printf("empty PREC %d\n", lst->prec);
+   printf("empty NEXT %d\n", lst->next);
     write(1, "pb\n", 3);
     return (lst);
 }
