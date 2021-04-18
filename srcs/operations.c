@@ -103,7 +103,7 @@ t_list *ft_pb(t_list *empty, t_list *lst)
     else
     {
         tmp2 = empty;
-        tmp2->prec = 0;
+        tmp2->prec = lst;
         tmp2->next = 0;
         ft_lstadd_front(&lst, tmp2);
         ft_lstiter(lst);

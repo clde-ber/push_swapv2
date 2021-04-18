@@ -15,75 +15,30 @@ rrr :rra and rrb at the same time.
 
 t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
 {
- //   if (!(empty = malloc(sizeof(t_list))))
- //       return (0);
-     while (lst->prec)
-        lst = lst->prec;
-    if (lst > lst->next)
-        lst = ft_sa(empty, lst);
-    lst = ft_rra(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst > lst->next)
-        lst = ft_sa(empty, lst);
-    lst = ft_rra(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst > lst->next)
-        lst = ft_sa(empty, lst);
-    lst = ft_rra(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst > lst->next)
-        lst = ft_sa(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    empty = ft_pa(empty, lst);
-    printf ("EMPTY %d\n", empty);
-    printf ("EMPTY PREC %d\n", empty->prec);
-    printf ("EMPTY NEXT %d\n", empty->next);
-    while (lst->prec)
-        lst = lst->prec;
-    printf("LST*** %d\n", lst);
-    if (lst > lst->next)
-        lst = ft_sa(empty, lst);
-    printf("LST*** %d\n", lst);
-    lst = ft_rra(empty, lst);
-    // segv
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst > lst->next)
-        lst = ft_sa(empty, lst);
-    lst = ft_rra(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst > lst->next)
-        lst = ft_sa(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    empty = ft_pa(empty, lst);
-    printf ("EMPTY %d\n", empty);
-    printf ("EMPTY PREC %d\n", empty->prec);
-    printf ("EMPTY NEXT %d\n", empty->next);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst > lst->next)
-        lst = ft_sa(empty, lst);
-    printf ("EMPTY %d\n", empty);
-    printf ("EMPTY PREC %d\n", empty->prec);
-    printf ("EMPTY NEXT %d\n", empty->next);
-    while (empty->prec)
-        empty = empty->prec;
-    while (lst->prec)
-        lst = lst->prec;
+    int x;
+
+    x = 0;
+    while (j > 1)
+    {
+        if (j == x)
+        {
+            empty = ft_pa(empty, lst);
+            j -= 1;
+            x = 0;
+        }
+        if (lst < lst->next)
+            lst = ft_sa(empty, lst);
+        if (j > 2)
+        lst = ft_rra(empty, lst);
+        x++;
+    }
     lst = ft_pb(empty, lst);
-    while (empty->prec)
-        empty = empty->prec;
-     while (lst->prec)
-        lst = lst->prec;
     lst = ft_pb(empty, lst);
     while (lst->prec)
+    {
+        printf("final value %d\n", lst->value);
         lst = lst->prec;
+    }
     while (lst)
     {
         printf("final value %d\n", lst->value);
