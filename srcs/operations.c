@@ -234,12 +234,7 @@ t_list *ft_rra(t_list *empty, t_list *lst)
 //    printf("LST %d\n", lst->value);
     tmp = lst;
     while (lst->next)
-    {
-        printf("heyhye%d\n", lst->value);
-        printf("heyhey_next%d\n", lst->next);
-        printf("heyhey_prec%d\n", lst->prec);
         lst = lst->next;
-    }
     lst->prec->next = 0;
     tmp2 = lst;
  /*   printf("heyhye%d\n", lst);

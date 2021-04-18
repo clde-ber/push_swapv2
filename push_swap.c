@@ -32,8 +32,8 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
-    while (lst->next->next)
-        lst = lst->next;
+    while (lst->prec)
+        lst = lst->prec;
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
