@@ -19,27 +19,22 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
  //       return (0);
      while (lst->prec)
         lst = lst->prec;
-    if (lst < lst->next)
+    if (lst > lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
     while (lst->prec)
         lst = lst->prec;
-    if (lst < lst->next)
+    if (lst > lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
     while (lst->prec)
         lst = lst->prec;
-    if (lst < lst->next)
+    if (lst > lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
     while (lst->prec)
         lst = lst->prec;
-    if (lst < lst->next)
-        lst = ft_sa(empty, lst);
-    lst = ft_rra(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst < lst->next)
+    if (lst > lst->next)
         lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
@@ -50,24 +45,19 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
     while (lst->prec)
         lst = lst->prec;
     printf("LST*** %d\n", lst);
-    if (lst < lst->next)
+    if (lst > lst->next)
         lst = ft_sa(empty, lst);
     printf("LST*** %d\n", lst);
     lst = ft_rra(empty, lst);
     // segv
     while (lst->prec)
         lst = lst->prec;
-    if (lst < lst->next)
+    if (lst > lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
     while (lst->prec)
         lst = lst->prec;
-    if (lst < lst->next)
-        lst = ft_sa(empty, lst);
-    lst = ft_rra(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst < lst->next)
+    if (lst > lst->next)
         lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
@@ -77,20 +67,28 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
     printf ("EMPTY NEXT %d\n", empty->next);
     while (lst->prec)
         lst = lst->prec;
-    if (lst < lst->next)
+    if (lst > lst->next)
         lst = ft_sa(empty, lst);
     printf ("EMPTY %d\n", empty);
     printf ("EMPTY PREC %d\n", empty->prec);
     printf ("EMPTY NEXT %d\n", empty->next);
+    while (empty->prec)
+        empty = empty->prec;
+    while (lst->prec)
+        lst = lst->prec;
     lst = ft_pb(empty, lst);
+    while (empty->prec)
+        empty = empty->prec;
+     while (lst->prec)
+        lst = lst->prec;
     lst = ft_pb(empty, lst);
     while (lst->prec)
         lst = lst->prec;
- /*   while (lst)
+    while (lst)
     {
         printf("final value %d\n", lst->value);
         lst = lst->next;
-    }*/
+    }
     return (lst);
 }
 
