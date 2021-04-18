@@ -15,6 +15,8 @@ rrr :rra and rrb at the same time.
 
 int push_swap(t_list *empty, t_list *lst, int i, int j)
 {
+ //   if (!(empty = malloc(sizeof(t_list))))
+ //       return (0);
      while (lst->prec)
         lst = lst->prec;
     if (lst < lst->next)
@@ -41,7 +43,10 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
         lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
-    lst = ft_pa(empty, lst);
+    empty = ft_pa(empty, lst);
+    printf ("EMPTY %d\n", empty);
+    printf ("EMPTY PREC %d\n", empty->prec);
+    printf ("EMPTY NEXT %d\n", empty->next);
     while (lst->prec)
         lst = lst->prec;
     printf("LST*** %d\n", lst);
@@ -66,14 +71,19 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
         lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
-    lst = ft_pa(empty, lst);
+    empty = ft_pa(empty, lst);
+    printf ("EMPTY %d\n", empty);
+    printf ("EMPTY PREC %d\n", empty->prec);
+    printf ("EMPTY NEXT %d\n", empty->next);
     while (lst->prec)
         lst = lst->prec;
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     printf ("EMPTY %d\n", empty);
-    empty = ft_pb(empty, lst);
-    empty = ft_pb(empty, lst);
+    printf ("EMPTY PREC %d\n", empty->prec);
+    printf ("EMPTY NEXT %d\n", empty->next);
+    lst = ft_pb(empty, lst);
+    lst = ft_pb(empty, lst);
  /*   while (lst->prec)
         lst = lst->prec;
     while (lst->next)
