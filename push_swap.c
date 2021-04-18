@@ -84,13 +84,13 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
     printf ("EMPTY NEXT %d\n", empty->next);
     lst = ft_pb(empty, lst);
     lst = ft_pb(empty, lst);
- /*   while (lst->prec)
+    while (lst->prec)
         lst = lst->prec;
-    while (lst->next)
+    while (lst)
     {
         printf("final value %d\n", lst->value);
         lst = lst->next;
-    }*/
+    }
     return (0);
 }
 
