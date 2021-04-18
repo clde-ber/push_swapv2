@@ -13,7 +13,7 @@ rrb :reverse rotate b- shift down all elements of stack b by 1. The last element
 rrr :rra and rrb at the same time.
 */
 
-int push_swap(t_list *empty, t_list *lst, int i, int j)
+t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
 {
  //   if (!(empty = malloc(sizeof(t_list))))
  //       return (0);
@@ -86,12 +86,12 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
     lst = ft_pb(empty, lst);
     while (lst->prec)
         lst = lst->prec;
-    while (lst)
+ /*   while (lst)
     {
         printf("final value %d\n", lst->value);
         lst = lst->next;
-    }
-    return (0);
+    }*/
+    return (lst);
 }
 
 t_list *create_list(t_list *lst, int value, int i, char **av)
@@ -137,7 +137,7 @@ int main(int ac, char **av)
         printf("lst_prec%d\n", lst->prec);
         lst = lst->next;
     }*/
-    push_swap(empty, lst, 0, ac - 1);
+    lst = push_swap(empty, lst, 0, ac - 1);
 //    lst = lst->next;
     while (lst)
     {

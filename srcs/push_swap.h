@@ -11,6 +11,7 @@ typedef struct s_list
     struct s_list *next;
 }               t_list;
 
+t_list *push_swap(t_list *empty, t_list *lst, int i, int j);
 t_list *ft_sa(t_list *empty, t_list *lst);
 int ft_sb(t_list *empty, t_list *lst);
 int ss(t_list *empty, t_list *lst);
