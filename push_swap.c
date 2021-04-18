@@ -15,56 +15,66 @@ rrr :rra and rrb at the same time.
 
 int push_swap(t_list *empty, t_list *lst, int i, int j)
 {
-    printf("1 %d\n", lst->value);
-    printf("2 %d\n", lst->next->value);
+     while (lst->prec)
+        lst = lst->prec;
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
+    while (lst->next->next)
+        lst = lst->next;
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    lst = ft_rra(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_pa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
-    printf("1 %d\n", lst->value);
-    printf("2 %d\n", lst->next->value);
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
+    while (lst->next->next)
+        lst = lst->next;
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     lst = ft_rra(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    lst = ft_rra(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
     lst = ft_pa(empty, lst);
-    if (lst < lst->next)
-        lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
-    lst = ft_pa(empty, lst);
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
-    printf("!!!%d\n", lst);
     empty = ft_pb(empty, lst);
-    printf("!!!%d\n", empty);
     empty = ft_pb(empty, lst);
-    while (lst->prec)
-    {
-        printf("lst->value %d\n", lst->value);
+ /*   while (lst->prec)
         lst = lst->prec;
-    }
     while (lst->next)
     {
-        printf("lst->value %d\n", lst->value);
+        printf("final value %d\n", lst->value);
         lst = lst->next;
-    }
+    }*/
     return (0);
 }
 
@@ -113,8 +123,6 @@ int main(int ac, char **av)
     }*/
     push_swap(empty, lst, 0, ac - 1);
 //    lst = lst->next;
-    while (lst->prec)
-        lst = lst->prec;
     while (lst)
     {
         printf("lst->value %d\n", lst->value);

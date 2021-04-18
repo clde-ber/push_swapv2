@@ -78,65 +78,22 @@ t_list *ft_pb(t_list *empty, t_list *lst)
     t_list *tmp3;
 
     if (!(empty))
+    {
+         write(1, "pb\n", 3);
         return (empty);
- //   if (!(tmp = malloc(sizeof(t_list))))
- //       return (0);
-    while (lst->prec)
-        lst = lst->prec;
-    printf("empty to free value %d\n", empty->value);
-    tmp = (lst) ?  lst : 0;
-//    empty = tmp;
-//    while (lst->next)
-//        lst = lst->next;
-//    lst->next->prec = 0;
+    }
+    tmp = (lst) ? lst : 0;
     while (empty->prec)
         empty = empty->prec;
-    ft_lstadd_front(&lst, ft_lstnew(empty, empty->value));
-    empty->next->prec = 0;
     tmp = empty;
     empty = empty->next;
-    ft_lstdelone(tmp);
-/*    while (lst)
-    {
-        printf("lst to free value %d\n", lst->value);
-        printf("lst to free %d\n", lst);
-        printf("lst to free next %d\n", lst->next);
-        printf("lst to free prec%d\n", lst->prec);
-        if (lst->prec == 0)
-            lst->prec = 0;
-        tmp = lst;
-        lst = lst->next;
-        ft_lstdelone(tmp);
-    }*/
-/*    printf("lst value %d\n", empty->value);
-    printf("lst %d\n", empty);
-    printf("lst to free next %d\n", empty->next);
-    printf("lst to free prec%d\n", empty->prec);*/
-//   while (lst->prec)
-//    {
-//        lst = lst->prec;
-//    }
-/*    while (lst->next)
-    {
-        printf("empty value %d\n", lst->value);
-        printf("empty next %d\n", empty->next);
-        printf("empty prec %d\n", empty->prec);
-        printf("empty VALUE %d\n", empty->value);
-        tmp = lst;
-        lst = lst->next;
-        lst->prec = tmp;
-    }*/
- /*    while (lst)
-    {
-        printf("hey%d\n", lst);
-        printf("hey_next%d\n", lst->next);
-        printf("hey_prec%d\n", lst->prec);
-        lst = lst->next;
-    }
-    printf("empty %d\n", empty);
-    printf("empty next %d\n", empty->next);
-    printf("empty prec %d\n", empty->prec);*/
-//     printf("empty value %d\n", lst->value);
+    empty->prec = 0;
+    ft_lstadd_front(&lst, tmp);
+    printf("lst to free value %d\n", tmp->value);
+    tmp = lst;
+    lst->prec = 0;
+    lst = lst->next;
+    tmp->next = lst;
     write(1, "pb\n", 3);
     return (empty);
 }
@@ -148,14 +105,11 @@ t_list *ft_pa(t_list *empty, t_list *lst)
     t_list *tmp3;
 
     if (!(lst))
+    {
+        write(1, "pa\n", 3);
         return (lst);
- //   if (!(tmp = malloc(sizeof(t_list))))
- //       return (0);
+    }
     tmp = (empty) ? empty : 0;
-//    empty = tmp;
-//    while (lst->next)
-//        lst = lst->next;
-//    lst->next->prec = 0;
     while (lst->prec)
         lst = lst->prec;
     tmp = lst;
@@ -167,49 +121,6 @@ t_list *ft_pa(t_list *empty, t_list *lst)
     empty->prec = 0;
     empty = empty->next;
     tmp->next = empty;
-//    lst = lst->next;
-//    ft_lstdelone(tmp);
-/*    while (lst)
-    {
-        printf("lst to free value %d\n", lst->value);
-        printf("lst to free %d\n", lst);
-        printf("lst to free next %d\n", lst->next);
-        printf("lst to free prec%d\n", lst->prec);
-        if (lst->prec == 0)
-            lst->prec = 0;
-        tmp = lst;
-        lst = lst->next;
-        ft_lstdelone(tmp);
-    }*/
-/*    printf("lst value %d\n", lst->value);
-    printf("lst %d\n", lst);
-    printf("lst to free next %d\n", lst->next->value);*/
-//    printf("lst to free prec%d\n", lst->prec->value);
-//   while (lst->prec)
-//    {
-//        lst = lst->prec;
-//    }
-/*    while (empty->next)
-    {
-        printf("empty value %d\n", empty->value);
-        printf("empty next %d\n", empty->next);
-        printf("empty prec %d\n", empty->prec);
-        printf("empty VALUE %d\n", empty->value);
-        tmp = empty;
-        empty = empty->next;
-        empty->prec = tmp;
-    }*/
- /*    while (lst)
-    {
-        printf("hey%d\n", lst);
-        printf("hey_next%d\n", lst->next);
-        printf("hey_prec%d\n", lst->prec);
-        lst = lst->next;
-    }*/
-/*    printf("empty %d\n", empty);
-    printf("empty next %d\n", empty->next);
-    printf("empty prec %d\n", empty->prec);*/
-//     printf("empty value %d\n", empty->value);
     write(1, "pa\n", 3);
     return (lst);
 }
