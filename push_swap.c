@@ -39,33 +39,39 @@ int push_swap(t_list *empty, t_list *lst, int i, int j)
         lst = lst->prec;
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
-    lst = ft_pa(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst < lst->next)
-        lst = ft_sa(empty, lst);
-    lst = ft_rra(empty, lst);
-    while (lst->next->next)
-        lst = lst->next;
-    if (lst < lst->next)
-        lst = ft_sa(empty, lst);
-    lst = ft_rra(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst < lst->next)
-        lst = ft_sa(empty, lst);
-    lst = ft_rra(empty, lst);
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst < lst->next)
-        lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
     lst = ft_pa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
+    printf("LST*** %d\n", lst);
     if (lst < lst->next)
         lst = ft_sa(empty, lst);
+    printf("LST*** %d\n", lst);
+    lst = ft_rra(empty, lst);
+    // segv
+    while (lst->prec)
+        lst = lst->prec;
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    lst = ft_rra(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    lst = ft_rra(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
+    lst = ft_pa(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
+    if (lst < lst->next)
+        lst = ft_sa(empty, lst);
+    printf ("EMPTY %d\n", empty);
     empty = ft_pb(empty, lst);
     empty = ft_pb(empty, lst);
  /*   while (lst->prec)

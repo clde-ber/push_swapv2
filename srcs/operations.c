@@ -83,17 +83,17 @@ t_list *ft_pb(t_list *empty, t_list *lst)
         return (empty);
     }
     tmp = (lst) ? lst : 0;
-    while (empty->prec)
-        empty = empty->prec;
-    tmp = empty;
-    empty = empty->next;
-    empty->prec = 0;
-    ft_lstadd_front(&lst, tmp);
-    printf("lst to free value %d\n", tmp->value);
-    tmp = lst;
-    lst->prec = 0;
-    lst = lst->next;
-    tmp->next = lst;
+        while (empty->prec)
+            empty = empty->prec;
+        tmp = empty;
+        empty = empty->next;
+        empty->prec = 0;
+        ft_lstadd_front(&lst, tmp);
+        printf("lst to free value %d\n", tmp->value);
+        tmp = lst;
+        lst->prec = 0;
+        lst = lst->next;
+        tmp->next = lst;
     write(1, "pb\n", 3);
     return (empty);
 }
@@ -110,17 +110,17 @@ t_list *ft_pa(t_list *empty, t_list *lst)
         return (lst);
     }
     tmp = (empty) ? empty : 0;
-    while (lst->prec)
-        lst = lst->prec;
-    tmp = lst;
-    lst = lst->next;
-    lst->prec = 0;
-    ft_lstadd_front(&empty, tmp);
-    printf("lst to free value %d\n", tmp->value);
-    tmp = empty;
-    empty->prec = 0;
-    empty = empty->next;
-    tmp->next = empty;
+    while (lst->next)
+        lst = lst->next;
+    tmp3 = lst->prec;
+    tmp2 = lst;
+    tmp2->prec = 0;
+    tmp2->next = tmp;
+    lst = tmp3;
+    lst->next = 0;
+    ft_lstadd_front(&empty, tmp2);
+//    printf("lst to free value %d\n", tmp->value);
+   printf("empty VALUE %d\n", empty->value);
     write(1, "pa\n", 3);
     return (lst);
 }
@@ -199,9 +199,9 @@ t_list *ft_rra(t_list *empty, t_list *lst)
     tmp = lst;
     while (lst->next)
     {
-   /*     printf("heyhye%d\n", lst->value);
+        printf("heyhye%d\n", lst->value);
         printf("heyhey_next%d\n", lst->next);
-        printf("heyhey_prec%d\n", lst->prec);*/
+        printf("heyhey_prec%d\n", lst->prec);
         lst = lst->next;
     }
     lst->prec->next = 0;
