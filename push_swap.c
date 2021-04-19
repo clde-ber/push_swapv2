@@ -18,29 +18,36 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
     int x;
 
     x = 0;
-    while (j > 0)
+    while (j > 1)
     {
-        if (j == x)
+        while (lst->next)
+            lst = lst->next;
+        lst = lst->prec;
+        lst = ft_sa(empty, lst);
+        if (x == j)
         {
-            if (j > 2)
-                empty = ft_pa(empty, lst);
             while (lst->prec)
                 lst = lst->prec;
+            if (j > 2)
+                empty = ft_pa(empty, lst);
+            while (empty->prec)
+                empty = empty->prec;
             j -= 1;
             x = 0;
         }
         while (lst->prec)
             lst = lst->prec;
-        if (lst < lst->next)
-            lst = ft_sa(empty, lst);
-        lst = ft_rra(empty, lst);
+        if (x < j && j > 1)
+            lst = ft_ra(empty, lst);
         x++;
     }
-    while (empty->prec)
-        empty = empty->prec;
+    while (lst->next)
+            lst = lst->next;
+    lst = lst->prec;
+    lst = ft_sa(empty, lst);
+    while (lst->prec)
+        lst = lst->prec;
     lst = ft_pb(empty, lst);
-    while (empty->prec)
-        empty = empty->prec;
     lst = ft_pb(empty, lst);
     while (lst->prec)
         lst = lst->prec;
@@ -58,17 +65,23 @@ t_list *create_list(t_list *lst, int value, int i, char **av)
 
     tmp = 0;
     lst = ft_lstnew(lst, (value = ft_atoi(av[i])));
-    printf("lst->value %d\n", lst->value);
     i--;
     while (i > 0)
     {
         tmp = lst;
         ft_lstadd_front(&lst, ft_lstnew(lst, (value = ft_atoi(av[i]))));
-        printf("lst->value %d\n", lst->value);
         ft_lstiter(lst);
         tmp->prec = lst;
         i--;
     }
+    while (lst->prec)
+        lst = lst->prec;
+    while (lst->next)
+    {
+        printf("lst->value %d\n", lst->value);
+        lst  = lst->next;
+    }
+    printf("lst->value %d\n", lst->value);
     return (lst);
 }
 

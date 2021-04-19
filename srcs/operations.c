@@ -17,8 +17,9 @@ t_list *ft_sa(t_list *empty, t_list *lst)
 
     if (!(lst || (lst && !lst->next)))
         return (1);
-    while (lst->prec)
-        lst = lst->prec;
+    while (lst->next)
+        lst = lst->next;
+    lst = lst->prec;
     swap(lst, lst->next);
 //    lst = tmp->prec;
 //    lst->next = 0;
@@ -164,19 +165,48 @@ t_list *ft_pa(t_list *empty, t_list *lst)
 int ft_ra(t_list *empty, t_list *lst)
 {
     t_list *tmp;
+    t_list *tmp2;
 
-    ft_lstadd_back(&lst, ft_lstnew(lst, lst->value));
-    ft_lstdelone(lst);
-    while (lst->next)
-        lst = lst->next;
     while (lst->prec)
     {
-        tmp = lst;
+     //   printf("LST %d\n", lst->value);
         lst = lst->prec;
-        lst->prec = tmp;
     }
-    write(1, "ra\n", 3);
-    return (0);
+    tmp = lst;
+    lst = lst->next;
+    lst->prec = 0;
+    while (lst->next)
+        lst = lst->next;
+    tmp2 = lst;
+    lst = lst->prec;
+    lst->next = tmp2;
+ //   tmp2 = lst;
+    ft_lstadd_front(&lst, tmp);
+    ft_lstiter(lst);
+    lst->prec = tmp2;
+    tmp2->next = lst;
+    lst->next = 0;
+//    lst->next = 0;
+    while (lst->prec)
+    {
+        lst = lst->prec;
+    }
+    while (lst->next)
+    {
+        printf("lst value %d\n", lst->value);
+        printf("lst %d\n", lst);
+        printf("lst prec %d\n", lst->prec);
+        printf("lst next %d\n", lst->next);
+        lst = lst->next;
+    }
+    printf("lst value %d\n", lst->value);
+    printf("lst %d\n", lst);
+    printf("lst prec %d\n", lst->prec);
+    printf("lst next %d\n", lst->next);
+    while (lst->prec)
+        lst = lst->prec;
+    write(1, "ra\n", 4);
+    return (lst);
 }
 
 int ft_rb(t_list *empty, t_list *lst)
