@@ -18,27 +18,32 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
     int x;
 
     x = 0;
-    while (j > 1)
+    while (j > 0)
     {
         if (j == x)
         {
-            empty = ft_pa(empty, lst);
+            if (j > 2)
+                empty = ft_pa(empty, lst);
+            while (lst->prec)
+                lst = lst->prec;
             j -= 1;
             x = 0;
         }
+        while (lst->prec)
+            lst = lst->prec;
         if (lst < lst->next)
             lst = ft_sa(empty, lst);
-        if (j > 2)
         lst = ft_rra(empty, lst);
         x++;
     }
+    while (empty->prec)
+        empty = empty->prec;
     lst = ft_pb(empty, lst);
+    while (empty->prec)
+        empty = empty->prec;
     lst = ft_pb(empty, lst);
     while (lst->prec)
-    {
-        printf("final value %d\n", lst->value);
         lst = lst->prec;
-    }
     while (lst)
     {
         printf("final value %d\n", lst->value);
