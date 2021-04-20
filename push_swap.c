@@ -16,36 +16,46 @@ rrr :rra and rrb at the same time.
 t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
 {
     int x;
+    int k;
 
     x = 0;
-    while (j > 1)
+    k = j;
+    while (x >= 0)
     {
         while (lst->prec)
             lst = lst->prec;
-        lst = ft_sa(empty, lst);
-        if (x == j)
+        if (lst > lst->next)
+            lst = ft_sa(empty, lst);
+        if (x == j - 1)
         {
             while (lst->prec)
                 lst = lst->prec;
-            if (j > 2)
-                empty = ft_pa(empty, lst);
+            empty = ft_pa(empty, lst);
             while (empty->prec)
                 empty = empty->prec;
             j -= 1;
-            x = 0;
+            printf("X1 = %d\n", x);
+            x = (j <= k / 2) ? -1 : 0;
+            printf("X2 = %d\n", x);
+            printf("K / 2 = %d\n", k / 2);
         }
+        if (x == -1)
+            break;
         while (lst->prec)
             lst = lst->prec;
-        if (x < j && j > 1)
-            lst = ft_ra(empty, lst);
-        printf("lst = %d\n", lst);
+        write(1, "test", 4);
+        if (x < j - 1)
+            ft_ra(empty, lst);
         x++;
     }
-    while (lst->prec)
-            lst = lst->prec;
-    lst = ft_sa(empty, lst);
+     while (lst->prec)
+        lst = lst->prec;
+    if (lst > lst->next)
+        lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
+    while (empty->prec)
+        empty = empty->prec; 
     lst = ft_pb(empty, lst);
     lst = ft_pb(empty, lst);
     while (lst->prec)

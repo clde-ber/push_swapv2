@@ -15,11 +15,15 @@ t_list *ft_sa(t_list *empty, t_list *lst)
     t_list *tmp2;
     t_list *tmp3;
 
+    write(1, "C", 1);
     if ((!lst || (lst && !lst->next)))
         return (lst);
+    write(1, "B", 1);
     while (lst->prec)
         lst = lst->prec;
+    write(1, "B", 1);
     swap(lst, lst->next);
+    write(1, "B", 1);
     lst->prec = 0;
     lst->next->prec = lst;
     lst->next = lst->next;
