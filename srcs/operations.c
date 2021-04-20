@@ -15,18 +15,21 @@ t_list *ft_sa(t_list *empty, t_list *lst)
     t_list *tmp2;
     t_list *tmp3;
 
-    if (!(lst || (lst && !lst->next)))
-        return (1);
-    while (lst->next)
-        lst = lst->next;
-    lst = lst->prec;
+    if ((!lst || (lst && !lst->next)))
+        return (lst);
+    while (lst->prec)
+        lst = lst->prec;
     swap(lst, lst->next);
-//    lst = tmp->prec;
+    lst->prec = 0;
+    lst->next->prec = lst;
+    lst->next = lst->next;
 //    lst->next = 0;
 //    tmp = lst->prec;
 /*    printf("lst 2 %d\n", lst);
     printf("lst 2 %d\n", lst->prec);
     printf("lst 2 %d\n", lst->next);*/
+    while (lst->prec)
+        lst = lst->prec;
     while (lst->next)
     {
         printf("value %d\n", lst->value);

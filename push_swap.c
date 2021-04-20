@@ -20,9 +20,8 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
     x = 0;
     while (j > 1)
     {
-        while (lst->next)
-            lst = lst->next;
-        lst = lst->prec;
+        while (lst->prec)
+            lst = lst->prec;
         lst = ft_sa(empty, lst);
         if (x == j)
         {
@@ -39,11 +38,11 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
             lst = lst->prec;
         if (x < j && j > 1)
             lst = ft_ra(empty, lst);
+        printf("lst = %d\n", lst);
         x++;
     }
-    while (lst->next)
-            lst = lst->next;
-    lst = lst->prec;
+    while (lst->prec)
+            lst = lst->prec;
     lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
