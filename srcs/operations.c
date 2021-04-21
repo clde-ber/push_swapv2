@@ -23,6 +23,8 @@ t_list *ft_sa(t_list *empty, t_list *lst)
     while (lst->next)
         lst = lst->next;
     lst = lst->prec;
+    printf("liste %d\n", lst->value);
+    printf("liste next %d\n", lst->next->value);
     write(1, "B", 1);
     swap(lst, lst->next);
     write(1, "B", 1);

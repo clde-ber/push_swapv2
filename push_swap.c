@@ -22,9 +22,10 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
     k = j;
     while (x >= 0)
     {
-        while (lst->prec)
-            lst = lst->prec;
-        if (lst > lst->next)
+        while (lst->next)
+            lst = lst->next;
+        lst = lst->prec;
+        if (lst->value > lst->next->value)
             lst = ft_sa(empty, lst);
         if (x == j - 1)
         {
@@ -33,15 +34,13 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
             empty = ft_pa(empty, lst);
             while (empty->prec)
                 empty = empty->prec;
+            while (lst->next)
+                lst = lst->next;
+            lst = lst->prec;
+            if (lst->value > lst->next->value)
+                lst = ft_sa(empty, lst);
             j -= 1;
-            printf("X1 = %d\n", x);
             x = (j <= k / 2) ? -1 : 0;
-            printf("X2 = %d\n", x);
-            printf("K / 2 = %d\n", k / 2);
-            while (lst->prec)
-                lst = lst->prec;
-            if (lst > lst->next)
-            lst = ft_sa(empty, lst);
         }
         while (lst->prec && x != -1)
             lst = lst->prec;
@@ -50,9 +49,10 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
             ft_ra(empty, lst);
         x = (x == -1) ? -1 : ++x;
     }
-    while (lst->prec)
-        lst = lst->prec;
-    if (lst < lst->next)
+    while (lst->next)
+        lst = lst->next;
+    lst = lst->prec;
+    if (lst->value < lst->next->value)
         lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
