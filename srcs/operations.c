@@ -3,6 +3,7 @@
 void swap(t_list **a, t_list **b)
 {
     t_list *tmp;
+    t_list *tmp2;
 
     tmp = *a;
     *a = *b;
@@ -19,14 +20,12 @@ t_list *ft_sa(t_list *empty, t_list *lst)
     if ((!lst || (lst && !lst->next)))
         return (lst);
     write(1, "B", 1);
-    while (lst->prec)
-        lst = lst->prec;
+    while (lst->next)
+        lst = lst->next;
+    lst = lst->prec;
     write(1, "B", 1);
     swap(lst, lst->next);
     write(1, "B", 1);
-    lst->prec = 0;
-    lst->next->prec = lst;
-    lst->next = lst->next;
 //    lst->next = 0;
 //    tmp = lst->prec;
 /*    printf("lst 2 %d\n", lst);
@@ -156,14 +155,14 @@ t_list *ft_pa(t_list *empty, t_list *lst)
     tmp->next = empty;
     while (empty->prec)
     {
-        printf("empty VALUE %d\n", empty);
-   printf("empty PREC %d\n", empty->prec);
-   printf("empty NEXT %d\n", empty->next);
+        printf("empty VALUE %d\n", empty->value);
+//   printf("empty PREC %d\n", empty->prec);
+//   printf("empty NEXT %d\n", empty->next);
         empty = empty->prec;
     }
-     printf("empty VALUE %d\n", empty);
-   printf("empty PREC %d\n", empty->prec);
-   printf("empty NEXT %d\n", empty->next);
+     printf("empty VALUE %d\n", empty->value);
+//   printf("empty PREC %d\n", empty->prec);
+//   printf("empty NEXT %d\n", empty->next);
 //    printf("lst to free value %d\n", tmp->value);
     write(1, "pa\n", 3);
     return (empty);
@@ -201,15 +200,15 @@ int ft_ra(t_list *empty, t_list *lst)
     while (lst->next)
     {
         printf("lst value %d\n", lst->value);
-        printf("lst %d\n", lst);
-        printf("lst prec %d\n", lst->prec);
-        printf("lst next %d\n", lst->next);
+    //    printf("lst %d\n", lst);
+    //    printf("lst prec %d\n", lst->prec);
+    //    printf("lst next %d\n", lst->next);
         lst = lst->next;
     }
     printf("lst value %d\n", lst->value);
-    printf("lst %d\n", lst);
-    printf("lst prec %d\n", lst->prec);
-    printf("lst next %d\n", lst->next);
+//    printf("lst %d\n", lst);
+//    printf("lst prec %d\n", lst->prec);
+//    printf("lst next %d\n", lst->next);
     while (lst->prec)
         lst = lst->prec;
     write(1, "ra\n", 4);

@@ -38,19 +38,21 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
             x = (j <= k / 2) ? -1 : 0;
             printf("X2 = %d\n", x);
             printf("K / 2 = %d\n", k / 2);
+            while (lst->prec)
+                lst = lst->prec;
+            if (lst > lst->next)
+            lst = ft_sa(empty, lst);
         }
-        if (x == -1)
-            break;
-        while (lst->prec)
+        while (lst->prec && x != -1)
             lst = lst->prec;
         write(1, "test", 4);
-        if (x < j - 1)
+        if (x < j - 1 && x != -1)
             ft_ra(empty, lst);
-        x++;
+        x = (x == -1) ? -1 : ++x;
     }
-     while (lst->prec)
+    while (lst->prec)
         lst = lst->prec;
-    if (lst > lst->next)
+    if (lst < lst->next)
         lst = ft_sa(empty, lst);
     while (lst->prec)
         lst = lst->prec;
