@@ -36,6 +36,8 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
             empty = ft_pa(empty, lst);
             while (empty->prec)
                 empty = empty->prec;
+            if (j == 3)
+                break;
             while (lst->next)
                 lst = lst->next;
             lst = lst->prec;
@@ -52,6 +54,11 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
             ft_ra(empty, lst);
         x++;
     }
+    while (lst->next)
+        lst = lst->next;
+        lst = lst->prec;
+    if (lst->value < lst->next->value)
+        lst = ft_sa(empty, lst);
     while (k > 2)
     {
         while (lst->prec)
