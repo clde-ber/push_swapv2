@@ -140,6 +140,11 @@ t_list *ft_pa(t_list *empty, t_list *lst)
         write(1, "pa\n", 3);
         return (empty);
     }
+    if (empty)
+    {
+        while (empty->next)
+            empty = empty->next;
+    }
     tmp = (empty) ? empty : 0;
     while (lst->next)
         lst = lst->next;
