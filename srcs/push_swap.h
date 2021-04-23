@@ -11,7 +11,13 @@ typedef struct s_list
     struct s_list *next;
 }               t_list;
 
-t_list *push_swap(t_list *empty, t_list *lst, int i, int j);
+typedef struct s_count
+{
+    int count;
+}               t_count;
+
+t_list *create_max(t_list *empty, t_list *lst, int i, int j, t_count *count);
+t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count, t_list *max);
 t_list *ft_sa(t_list *empty, t_list *lst);
 int ft_sb(t_list *empty, t_list *lst);
 int ss(t_list *empty, t_list *lst);

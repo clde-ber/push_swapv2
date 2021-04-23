@@ -13,7 +13,93 @@ rrb :reverse rotate b- shift down all elements of stack b by 1. The last element
 rrr :rra and rrb at the same time.
 */
 
-t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
+int is_max(int lst, int max)
+{
+    if (lst == max)
+        return (1);
+    return (0);
+}
+
+t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count, t_list *max)
+{
+    int x;
+    int k;
+
+    x = 0;
+    k = j;
+    while (j > 2)
+    {
+        while (s_lst->next)
+            s_lst = s_lst->next;
+        s_lst = s_lst->prec;
+        if (s_lst->value > s_lst->next->value && is_max(s_lst->next->value, max->value) == 0)
+        {
+            s_lst = ft_sa(empty, s_lst);
+            count->count++;
+        }
+        if (j == 2 && x == j - 1)
+            break ;
+        while (s_lst->next)
+            s_lst = s_lst->next;
+        s_lst = s_lst->prec;
+        if ((x == j - 1 && j > 2) || (is_max(s_lst->next->value, max->value) && j > 2))
+        {
+            if (is_max(s_lst->next->value, max->value) && max->next)
+                max = max->next;
+            empty = ft_pa(empty, s_lst);
+            while (s_lst->next)
+                s_lst = s_lst->next;
+            s_lst = s_lst->prec;
+            count->count++;
+            while (empty->prec)
+                empty = empty->prec;
+            if (j == 3)
+                break;
+            if (s_lst->value > s_lst->next->value && is_max(s_lst->next->value, max->value) == 0)
+            {
+                count->count++;
+                s_lst = ft_sa(empty, s_lst);
+            }
+            while (s_lst->next)
+                s_lst = s_lst->next;
+            s_lst = s_lst->prec;
+            j -= 1;
+            x = 0;
+        }
+        while (s_lst->next)
+            s_lst = s_lst->next;
+        s_lst = s_lst->prec;
+        if (x == 0 && j == 2)
+            break ;
+        if (x < j - 1 && is_max(s_lst->next->value, max->value) == 0)
+        {
+            count->count++;
+            ft_ra(empty, s_lst);
+        }
+        x++;
+    }
+    while (s_lst->next)
+        s_lst = s_lst->next;
+    s_lst = s_lst->prec;
+    if (s_lst->value < s_lst->next->value || is_max(s_lst->next->value, max->value))
+    {
+        count->count++;
+        s_lst = ft_sa(empty, s_lst);
+    }
+    while (k > 2)
+    {
+        while (s_lst->prec)
+            s_lst = s_lst->prec;
+        count->count++;
+        s_lst = ft_pb(empty, s_lst);
+        k--;
+    }
+    while (s_lst->prec)
+        s_lst = s_lst->prec;
+    return (s_lst);
+}
+
+t_list *create_max(t_list *empty, t_list *lst, int i, int j, t_count *count)
 {
     int x;
     int k;
@@ -26,7 +112,10 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
             lst = lst->next;
         lst = lst->prec;
         if (lst->value > lst->next->value)
+        {
             lst = ft_sa(empty, lst);
+            count->count++;
+        }
         if (j == 2 && x == j - 1)
             break ;
         if (x == j - 1 && j > 2)
@@ -34,6 +123,7 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
             while (lst->prec)
                 lst = lst->prec;
             empty = ft_pa(empty, lst);
+            count->count++;
             while (empty->prec)
                 empty = empty->prec;
             if (j == 3)
@@ -42,7 +132,10 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
                 lst = lst->next;
             lst = lst->prec;
             if (lst->value > lst->next->value)
+            {
+                count->count++;
                 lst = ft_sa(empty, lst);
+            }
             j -= 1;
             x = 0;
         }
@@ -51,28 +144,30 @@ t_list *push_swap(t_list *empty, t_list *lst, int i, int j)
         if (x == 0 && j == 2)
             break ;
         if (x < j - 1)
+        {
+            count->count++;
             ft_ra(empty, lst);
+        }
         x++;
     }
     while (lst->next)
         lst = lst->next;
         lst = lst->prec;
     if (lst->value < lst->next->value)
+    {
+        count->count++;
         lst = ft_sa(empty, lst);
+    }
     while (k > 2)
     {
         while (lst->prec)
             lst = lst->prec;
+        count->count++;
         lst = ft_pb(empty, lst);
         k--;
     }
     while (lst->prec)
         lst = lst->prec;
-    while (lst)
-    {
-        printf("final value %d\n", lst->value);
-        lst = lst->next;
-    }
     return (lst);
 }
 
@@ -94,11 +189,7 @@ t_list *create_list(t_list *lst, int value, int i, char **av)
     while (lst->prec)
         lst = lst->prec;
     while (lst->next)
-    {
-        printf("lst->value %d\n", lst->value);
         lst  = lst->next;
-    }
-    printf("lst->value %d\n", lst->value);
     return (lst);
 }
 
@@ -108,29 +199,26 @@ int main(int ac, char **av)
     int value;
     t_list *lst;
     t_list *empty;
-    t_list *tmp;
-    t_list *new;
+    t_list *max;
+    t_list *s_lst;
+    t_count *count;
 
     value = 0;
-    new = 0;
     i = ac - 1;
+    count = malloc(sizeof(t_count));
+    count->count = 0;
     lst = create_list(lst, value, i, av);
-//    if (!(empty = malloc (sizeof(t_list))))
-//        return (0);
     empty = NULL;
-/*    while (lst)
+    lst = create_max(empty, lst, 0, ac - 1, count);
+    ft_lstdelone(empty);
+    count->count = 0;
+    s_lst = create_list(s_lst, value, i, av);
+    s_lst = push_swap(empty, s_lst, 0, ac - 1, count, lst);
+    while (s_lst)
     {
-        printf("lst%d\n", lst);
-        printf("lst_next%d\n", lst->next);
-        printf("lst_prec%d\n", lst->prec);
-        lst = lst->next;
-    }*/
-    lst = push_swap(empty, lst, 0, ac - 1);
-//    lst = lst->next;
-    while (lst)
-    {
-        printf("lst->value %d\n", lst->value);
-        lst = lst->next;
+//        printf("%d\n", s_lst->value);
+        s_lst = s_lst->next;
     }
+    printf("%d\n", count->count);
     return (0);
 }
