@@ -20,6 +20,23 @@ int is_max(int lst, int max)
     return (0);
 }
 
+int ra_o_rra(t_list *s_lst, t_list *max)
+{
+    int i;
+    
+    i = 0;
+    while (s_lst->prec)
+        s_lst = s_lst->prec;
+    while (s_lst->next)
+    {
+        if (s_lst->value == max->value)
+            return (i);
+        s_lst = s_lst->next;
+        i++;
+    }
+    return (i);
+}
+
 t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count, t_list *max)
 {
     int x;
@@ -74,7 +91,10 @@ t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count, t_
         if (x < j - 1 && is_max(s_lst->next->value, max->value) == 0)
         {
             count->count++;
-            ft_ra(empty, s_lst);
+            if (ra_o_rra(s_lst, max) > k / 2)
+                ft_rra(empty, s_lst);
+            else
+                ft_ra(empty, s_lst);
         }
         x++;
     }
@@ -216,9 +236,10 @@ int main(int ac, char **av)
     s_lst = push_swap(empty, s_lst, 0, ac - 1, count, lst);
     while (s_lst)
     {
-//        printf("%d\n", s_lst->value);
+    //    printf("%d\n", s_lst->value);
         s_lst = s_lst->next;
     }
+//    printf("\n");
     printf("%d\n", count->count);
     return (0);
 }
