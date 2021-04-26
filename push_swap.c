@@ -20,7 +20,43 @@ int is_max(int lst, int max)
     return (0);
 }
 
-int ra_o_rra(t_list *s_lst, t_list *max)
+int find_max(t_list *max)
+{
+    int max_value;
+
+    max_value = max->value;
+    while (max->prec)
+        max = max->prec;
+    while (max->next)
+    {
+        if (max_value < max->value)
+            max_value = max->value;
+        max = max->next;
+    }
+    if (max_value < max->value)
+        max_value = max->value;
+    return (max_value);
+}
+
+int find_next_max(t_list *max, int cmp)
+{
+    int max_value;
+
+    max_value = max->value;
+    while (max->prec)
+        max = max->prec;
+    while (max->next)
+    {
+        if (max_value < max->value && max_value < cmp)
+            max_value = max->value;
+        max = max->next;
+    }
+    if (max_value < max->value && max_value < cmp)
+        max_value = max->value;
+    return (max_value);
+}
+
+int ra_o_rra(t_list *s_lst, int max)
 {
     int i;
     
@@ -29,7 +65,7 @@ int ra_o_rra(t_list *s_lst, t_list *max)
         s_lst = s_lst->prec;
     while (s_lst->next)
     {
-        if (s_lst->value == max->value)
+        if (s_lst->value == max)
             return (i);
         s_lst = s_lst->next;
         i++;
@@ -37,19 +73,24 @@ int ra_o_rra(t_list *s_lst, t_list *max)
     return (i);
 }
 
-t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count, t_list *max)
+t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count)
 {
     int x;
     int k;
+    int max;
+    int boolean;
 
+    boolean = 0;
     x = 0;
     k = j;
+    max = find_max(s_lst);
+    printf("max %d\n", max);
     while (j > 2)
     {
         while (s_lst->next)
             s_lst = s_lst->next;
         s_lst = s_lst->prec;
-        if (s_lst->value > s_lst->next->value && is_max(s_lst->next->value, max->value) == 0)
+        if (is_max(s_lst->next->value, max) == 0 && s_lst->value > s_lst->next->value)
         {
             s_lst = ft_sa(empty, s_lst);
             count->count++;
@@ -59,11 +100,12 @@ t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count, t_
         while (s_lst->next)
             s_lst = s_lst->next;
         s_lst = s_lst->prec;
-        if ((x == j - 1 && j > 2) || (is_max(s_lst->next->value, max->value) && j > 2))
+        if ((is_max(s_lst->next->value, max) && j > 2) || (x == j - 1 && j > 2))
         {
-            if (is_max(s_lst->next->value, max->value) && max->next)
-                max = max->next;
             empty = ft_pa(empty, s_lst);
+            max = find_next_max(s_lst, max);
+            printf("max %d\n", max);
+            boolean = 1;
             while (s_lst->next)
                 s_lst = s_lst->next;
             s_lst = s_lst->prec;
@@ -72,7 +114,7 @@ t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count, t_
                 empty = empty->prec;
             if (j == 3)
                 break;
-            if (s_lst->value > s_lst->next->value && is_max(s_lst->next->value, max->value) == 0)
+            if (is_max(s_lst->next->value, max) == 0 && s_lst->value > s_lst->next->value)
             {
                 count->count++;
                 s_lst = ft_sa(empty, s_lst);
@@ -88,7 +130,7 @@ t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count, t_
         s_lst = s_lst->prec;
         if (x == 0 && j == 2)
             break ;
-        if (x < j - 1 && is_max(s_lst->next->value, max->value) == 0)
+        if (is_max(s_lst->next->value, max) == 0 && x < j - 1)
         {
             count->count++;
             if (ra_o_rra(s_lst, max) > k / 2)
@@ -101,7 +143,7 @@ t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count, t_
     while (s_lst->next)
         s_lst = s_lst->next;
     s_lst = s_lst->prec;
-    if (s_lst->value < s_lst->next->value || is_max(s_lst->next->value, max->value))
+    if (is_max(s_lst->next->value, max) || s_lst->value < s_lst->next->value)
     {
         count->count++;
         s_lst = ft_sa(empty, s_lst);
@@ -226,20 +268,20 @@ int main(int ac, char **av)
     value = 0;
     i = ac - 1;
     count = malloc(sizeof(t_count));
-    count->count = 0;
-    lst = create_list(lst, value, i, av);
-    empty = NULL;
-    lst = create_max(empty, lst, 0, ac - 1, count);
-    ft_lstdelone(empty);
+//    count->count = 0;
+//    lst = create_list(lst, value, i, av);
+//    empty = NULL;
+//    lst = create_max(empty, lst, 0, ac - 1, count);
+//    ft_lstdelone(empty);
     count->count = 0;
     s_lst = create_list(s_lst, value, i, av);
-    s_lst = push_swap(empty, s_lst, 0, ac - 1, count, lst);
+    s_lst = push_swap(empty, s_lst, 0, ac - 1, count);
     while (s_lst)
     {
-    //    printf("%d\n", s_lst->value);
+        printf("%d\n", s_lst->value);
         s_lst = s_lst->next;
     }
 //    printf("\n");
-    printf("%d\n", count->count);
+//    printf("%d\n", count->count);
     return (0);
 }
