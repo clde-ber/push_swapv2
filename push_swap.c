@@ -84,7 +84,7 @@ t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count)
     x = 0;
     k = j;
     max = find_max(s_lst);
-    printf("max %d\n", max);
+ //   printf("max %d\n", max);
     while (j > 2)
     {
         while (s_lst->next)
@@ -104,7 +104,7 @@ t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count)
         {
             empty = ft_pa(empty, s_lst);
             max = find_next_max(s_lst, max);
-            printf("max %d\n", max);
+        //    printf("max %d\n", max);
             boolean = 1;
             while (s_lst->next)
                 s_lst = s_lst->next;
@@ -276,9 +276,12 @@ int main(int ac, char **av)
     count->count = 0;
     s_lst = create_list(s_lst, value, i, av);
     s_lst = push_swap(empty, s_lst, 0, ac - 1, count);
+    checker(s_lst);
+    while (s_lst->prec)
+        s_lst = s_lst->prec;
     while (s_lst)
     {
-        printf("%d\n", s_lst->value);
+    //    printf("%d ", s_lst->value);
         s_lst = s_lst->next;
     }
 //    printf("\n");

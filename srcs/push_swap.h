@@ -16,6 +16,7 @@ typedef struct s_count
     int count;
 }               t_count;
 
+void checker(t_list *s_lst);
 t_list *create_max(t_list *empty, t_list *lst, int i, int j, t_count *count);
 t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count);
 t_list *ft_sa(t_list *empty, t_list *lst);
