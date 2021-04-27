@@ -154,21 +154,33 @@ int ft_ra(t_list *empty, t_list *lst)
 int ft_rb(t_list *empty, t_list *lst)
 {
     t_list *tmp;
+    t_list *tmp2;
 
-    ft_lstadd_back(&empty, ft_lstnew(empty, empty->value));
-    ft_lstdelone(empty);
+    while (empty->prec)
+        empty = empty->prec;
+    tmp = empty;
+    empty = empty->next;
+    empty->prec = 0;
+    while (empty->next)
+        empty = empty->next;
+    tmp2 = empty;
+    empty = empty->prec;
+    empty->next = tmp2;
+    ft_lstadd_front(&empty, tmp);
+    ft_lstiter(empty);
+    empty->prec = tmp2;
+    tmp2->next = lst;
+    empty->next = 0;
+    while (empty->prec)
+        empty = empty->prec;
     while (empty->next)
         empty = empty->next;
     while (empty->prec)
-    {
-        tmp = empty;
         empty = empty->prec;
-        empty->prec = tmp;
-    }
-    return (0);
+    return (empty);
 }
 
-int rr(t_list *empty, t_list *lst)
+int ft_rr(t_list *empty, t_list *lst)
 {
     ft_ra(empty, lst);
     ft_rb(empty, lst);
@@ -222,9 +234,11 @@ int ft_rrb(t_list *empty, t_list *lst)
     empty = tmp;
     while (empty->prec)
         empty = empty->prec;
-    while (empty)
+    while (empty->next)
         empty = empty->next;
-    return (0);
+    while (empty->prec)
+        empty = empty->prec;
+    return (empty);
 }
 
 int ft_rrr(t_list *empty, t_list *lst)
