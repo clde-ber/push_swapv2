@@ -33,21 +33,26 @@ t_list *ft_sa(t_list *empty, t_list *lst)
 
 int ft_sb(t_list *empty, t_list *lst)
 {
-     t_list *tmp;
+    t_list *tmp;
     t_list *tmp2;
     t_list *tmp3;
 
-    if (!(empty || (empty && !empty->next)))
-        return (1);
-    while (empty->prec)
-        empty = empty->prec;
-    swap(empty, empty->next);
+    if ((!empty || (empty && !empty->next)))
+        return (lst);
     while (empty->next)
         empty = empty->next;
+    empty = empty->prec;
+    swap(empty, empty->next);
+    while (empty->prec)
+        empty = empty->prec;
+    while (empty->next)
+    {
+        empty = empty->next;
+    }
     return (empty);
 }
 
-int ss(t_list *empty, t_list *lst)
+int ft_ss(t_list *empty, t_list *lst)
 {
     ft_sa(empty, lst);
     ft_sb(empty, lst);
