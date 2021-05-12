@@ -66,7 +66,9 @@ t_list *ft_pb(t_list *empty, t_list *lst)
     t_list *tmp3;
 
     if (!(empty))
+    {
         return (lst);
+    }
     tmp = (lst) ? 0 : lst;
     while (empty->next)
         empty = empty->next;

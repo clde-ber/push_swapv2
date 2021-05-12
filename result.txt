@@ -1,23 +1,585 @@
-OK---1---
-OK---2---
-OK---3---
-OK---4---
-OK---5---
-OK---6---
-OK---7---
-OK---8---
+OK4 3 2 1 8
+---1---
+OK89 78 24 4
+---2---
+KOmax! 3
+max! 3
+MAX 3
+cmpppppppp 3
+cmp_s 1
+cmp_i 3
+I N D E X 0
+s_lst value 19
+s_lst value 20
+s_lst value 22
+s_lst value 21
+s_lst value 54
+max 2
+ct->max 0
+empty 54
+max 1
+ct->max 0
+empty 54
+empty 21
+54 21 19 20 22 0
+---3---
+OK4 3 0
+---4---
+KOmax! 4
+max! 4
+MAX 4
+cmpppppppp 4
+cmp_s 1
+cmp_i 2
+cmp_s 4
+cmp_i 1
+I N D E X 1
+s_lst value 70
+s_lst value 45
+s_lst value 2
+s_lst value 1
+s_lst value 78
+s_lst value 40
+max 2
+ct->max 0
+empty 40
+max 1
+ct->max 0
+empty 40
+empty 78
+40 78 70 45 2 1 0
+---5---
+KOmax! 3
+max! 3
+MAX 3
+cmpppppppp 3
+cmp_s 1
+cmp_i 3
+I N D E X 0
+s_lst value 6
+s_lst value 8
+s_lst value 90
+s_lst value 2
+s_lst value 57
+s_lst value 5
+s_lst value 4
+max 4
+ct->max 0
+empty 4
+max 3
+ct->max 0
+empty 4
+empty 5
+max 2
+ct->max 0
+empty 4
+empty 5
+empty 57
+max 1
+ct->max 0
+empty 4
+empty 5
+empty 57
+empty 2
+4 5 57 2 6 8 90 0
+---6---
+KOmax! 3
+max! 3
+MAX 3
+cmpppppppp 3
+cmp_s 1
+cmp_i 3
+I N D E X 0
+s_lst value 7
+s_lst value 30
+s_lst value 43
+s_lst value 24
+s_lst value 8
+s_lst value 9
+s_lst value 5
+s_lst value 78
+max 5
+ct->max 0
+empty 78
+max 4
+ct->max 0
+empty 78
+empty 5
+max 3
+ct->max 0
+empty 78
+empty 5
+empty 9
+max 2
+ct->max 0
+empty 78
+empty 5
+empty 9
+empty 8
+max 1
+ct->max 0
+empty 78
+empty 5
+empty 9
+empty 8
+empty 24
+78 5 9 8 24 7 30 43 0
+---7---
+OK9 8 1
+---8---
 ---9---
-OK---10---
-OK---11---
-OK---12---
-OK---13---
-OK---14---
-OK---15---
-OK---16---
-OK---17---
-OK---18---
-OK---19---
+KOmax! 4
+max! 4
+MAX 4
+cmpppppppp 4
+cmp_s 1
+cmp_i 3
+cmp_s 4
+cmp_i 1
+I N D E X 2
+s_lst value 43
+s_lst value 24
+s_lst value 9
+s_lst value 5
+s_lst value 8
+s_lst value 23
+s_lst value 12
+s_lst value 7
+s_lst value 30
+max 5
+ct->max 0
+empty 30
+max 4
+ct->max 0
+empty 30
+empty 7
+max 3
+ct->max 0
+empty 30
+empty 7
+empty 12
+max 2
+ct->max 0
+empty 30
+empty 7
+empty 12
+empty 23
+max 1
+ct->max 0
+empty 30
+empty 7
+empty 12
+empty 23
+empty 8
+30 7 12 23 8 43 24 9 5 0
+---10---
+KOmax! 6
+max! 6
+MAX 6
+cmpppppppp 6
+cmp_s 1
+cmp_i 3
+cmp_s 3
+cmp_i 2
+cmp_s 2
+cmp_i 2
+cmp_s 3
+cmp_i 6
+I N D E X 9
+s_lst value 1
+s_lst value 3
+s_lst value 4
+s_lst value 13
+s_lst value 15
+s_lst value 16
+s_lst value 12
+s_lst value 7
+s_lst value 30
+s_lst value 43
+s_lst value 24
+s_lst value 8
+s_lst value 9
+s_lst value 5
+s_lst value 78
+s_lst value 2
+max 10
+ct->max 0
+empty 2
+max 9
+ct->max 0
+empty 2
+empty 78
+max 8
+ct->max 0
+empty 2
+empty 78
+empty 5
+max 7
+ct->max 0
+empty 2
+empty 78
+empty 5
+empty 9
+max 6
+ct->max 0
+empty 2
+empty 78
+empty 5
+empty 9
+empty 8
+max 5
+ct->max 0
+empty 2
+empty 78
+empty 5
+empty 9
+empty 8
+empty 24
+max 4
+ct->max 0
+empty 2
+empty 78
+empty 5
+empty 9
+empty 8
+empty 24
+empty 43
+max 3
+ct->max 0
+empty 2
+empty 78
+empty 5
+empty 9
+empty 8
+empty 24
+empty 43
+empty 30
+max 2
+ct->max 0
+empty 2
+empty 78
+empty 5
+empty 9
+empty 8
+empty 24
+empty 43
+empty 30
+empty 7
+max 1
+ct->max 0
+empty 2
+empty 78
+empty 5
+empty 9
+empty 8
+empty 24
+empty 43
+empty 30
+empty 7
+empty 12
+2 78 5 9 8 24 43 30 7 12 1 3 4 13 15 16 0
+---11---
+OK3 1 -2 -4 7
+---12---
+OK78 24 -89 2
+---13---
+KOmax! 3
+max! 3
+MAX 3
+cmpppppppp 3
+cmp_s 3
+cmp_i 1
+I N D E X 0
+s_lst value 19
+s_lst value -20
+s_lst value -22
+s_lst value 21
+s_lst value -54
+max 2
+ct->max 0
+empty -54
+max 1
+ct->max 0
+empty -54
+empty 21
+-54 21 19 -20 -22 0
+---14---
+OK4 -3 0
+---15---
+KOmax! 3
+max! 3
+MAX 3
+cmpppppppp 3
+cmp_s 2
+cmp_i 2
+cmp_s 2
+cmp_i 3
+I N D E X 3
+s_lst value -2
+s_lst value 1
+s_lst value 78
+s_lst value 40
+s_lst value -70
+s_lst value 45
+max 3
+ct->max 0
+empty 45
+max 2
+ct->max 0
+empty 45
+empty -70
+max 1
+ct->max 0
+empty 45
+empty -70
+empty 40
+45 -70 40 -2 1 78 0
+---16---
+KOmax! 3
+max! 3
+MAX 3
+cmpppppppp 3
+cmp_s 2
+cmp_i 2
+cmp_s 3
+cmp_i 1
+I N D E X 2
+s_lst value 90
+s_lst value -2
+s_lst value -57
+s_lst value 5
+s_lst value 4
+s_lst value -6
+s_lst value -8
+max 4
+ct->max 0
+empty -8
+max 3
+ct->max 0
+empty -8
+empty -6
+max 2
+ct->max 0
+empty -8
+empty -6
+empty 4
+max 1
+ct->max 0
+empty -8
+empty -6
+empty 4
+empty 5
+-8 -6 4 5 90 -2 -57 0
+---17---
+KOmax! 3
+max! 3
+MAX 3
+cmpppppppp 3
+cmp_s 3
+cmp_i 1
+I N D E X 0
+s_lst value 7
+s_lst value -30
+s_lst value -43
+s_lst value 24
+s_lst value 8
+s_lst value 9
+s_lst value -5
+s_lst value -78
+max 5
+ct->max 0
+empty -78
+max 4
+ct->max 0
+empty -78
+empty -5
+max 3
+ct->max 0
+empty -78
+empty -5
+empty 9
+max 2
+ct->max 0
+empty -78
+empty -5
+empty 9
+empty 8
+max 1
+ct->max 0
+empty -78
+empty -5
+empty 9
+empty 8
+empty 24
+-78 -5 9 8 24 7 -30 -43 0
+---18---
+OK8 -9 0
+---19---
 ---20---
-OK---21---
-OK---22---
-OK
+KOmax! 3
+max! 3
+MAX 3
+cmpppppppp 3
+cmp_s 3
+cmp_i 1
+I N D E X 0
+s_lst value 7
+s_lst value -30
+s_lst value -43
+s_lst value 24
+s_lst value -9
+s_lst value -5
+s_lst value -8
+s_lst value 23
+max 5
+ct->max 0
+empty 23
+max 4
+ct->max 0
+empty 23
+empty -8
+max 3
+ct->max 0
+empty 23
+empty -8
+empty -5
+max 2
+ct->max 0
+empty 23
+empty -8
+empty -5
+empty -9
+max 1
+ct->max 0
+empty 23
+empty -8
+empty -5
+empty -9
+empty 24
+23 -8 -5 -9 24 7 -30 -43 0
+---21---
+KOmax! 3
+max! 3
+MAX 3
+cmpppppppp 3
+cmp_s 3
+cmp_i 1
+I N D E X 0
+s_lst value -7
+s_lst value -30
+s_lst value -43
+s_lst value -24
+s_lst value -8
+s_lst value -9
+s_lst value 5
+s_lst value -78
+s_lst value -2
+s_lst value -1
+s_lst value -3
+s_lst value -4
+s_lst value 105
+s_lst value 80
+s_lst value -32
+max 12
+ct->max 0
+empty -32
+max 11
+ct->max 0
+empty -32
+empty 80
+max 10
+ct->max 0
+empty -32
+empty 80
+empty 105
+max 9
+ct->max 0
+empty -32
+empty 80
+empty 105
+empty -4
+max 8
+ct->max 0
+empty -32
+empty 80
+empty 105
+empty -4
+empty -3
+max 7
+ct->max 0
+empty -32
+empty 80
+empty 105
+empty -4
+empty -3
+empty -1
+max 6
+ct->max 0
+empty -32
+empty 80
+empty 105
+empty -4
+empty -3
+empty -1
+empty -2
+max 5
+ct->max 0
+empty -32
+empty 80
+empty 105
+empty -4
+empty -3
+empty -1
+empty -2
+empty -78
+max 4
+ct->max 0
+empty -32
+empty 80
+empty 105
+empty -4
+empty -3
+empty -1
+empty -2
+empty -78
+empty 5
+max 3
+ct->max 0
+empty -32
+empty 80
+empty 105
+empty -4
+empty -3
+empty -1
+empty -2
+empty -78
+empty 5
+empty -9
+max 2
+ct->max 0
+empty -32
+empty 80
+empty 105
+empty -4
+empty -3
+empty -1
+empty -2
+empty -78
+empty 5
+empty -9
+empty -8
+max 1
+ct->max 0
+empty -32
+empty 80
+empty 105
+empty -4
+empty -3
+empty -1
+empty -2
+empty -78
+empty 5
+empty -9
+empty -8
+empty -24
+-32 80 105 -4 -3 -1 -2 -78 5 -9 -8 -24 -7 -30 -43 0

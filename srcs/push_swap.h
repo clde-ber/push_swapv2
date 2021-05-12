@@ -14,6 +14,9 @@ typedef struct s_list
 typedef struct s_count
 {
     int count;
+    int emp;
+    int index;
+    int max;
 }               t_count;
 
 void checker(t_list *s_lst);
