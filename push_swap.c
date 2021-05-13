@@ -73,14 +73,17 @@ int ra_o_rra(t_list *s_lst, int max)
     return (i);
 }
 
-t_list *push_run_to_a(int max, t_list *empty, t_list *s_lst, int k, int *j, t_count *ct)
+t_list *push_run_to_a(int max, t_list *empty, t_list *s_lst, int k, int j, t_count *ct)
 {
-    while (ct->index)
+    while (ct->max && empty)
     {
         while (s_lst->prec)
             s_lst = s_lst->prec;
+        while (empty->prec)
+            empty = empty->prec;
         s_lst = ft_pb(empty, s_lst);
-        ct->index--;
+        ct->count++;
+        ct->max--;
     }
     while (s_lst->prec)
         s_lst = s_lst->prec;
@@ -102,9 +105,11 @@ int find_min_run(int j)
 
 t_list *push_biggest_runs(int run, t_list *empty, t_list *s_lst, int cmp, int j, t_count *ct)
 {
-    printf("max %d\n", cmp);
-    printf("ct->max %d\n", ct->max);
+//    printf("max %d\n", cmp);
+//    printf("ct->max %d\n", ct->max);
+    ct->max++;
     empty = ft_pa(empty, s_lst);
+    ct->count++;
     ct->index++;
     if (empty)
     {
@@ -112,10 +117,10 @@ t_list *push_biggest_runs(int run, t_list *empty, t_list *s_lst, int cmp, int j,
             empty = empty->prec;
         while (empty->next)
         {
-            printf("empty %d\n", empty->value);
+//            printf("empty %d\n", empty->value);
             empty = empty->next;
         }
-        printf("empty %d\n", empty->value);
+//        printf("empty %d\n", empty->value);
         while (empty->prec)
             empty = empty->prec;
     }
@@ -137,7 +142,7 @@ t_list *find_index(int run, t_list *empty, t_list *s_lst, int cmp, int j, t_coun
     cmp_s = 1;
     i = 0;
     index = 0;
-    printf ("cmpppppppp %d\n", cmp);
+//    printf ("cmpppppppp %d\n", cmp);
     while (s_lst->prec)
         s_lst = s_lst->prec;
     while (s_lst->next && cmp_s != cmp && cmp_i != cmp)
@@ -154,8 +159,8 @@ t_list *find_index(int run, t_list *empty, t_list *s_lst, int cmp, int j, t_coun
             i++;
             s_lst = s_lst->next;
         }
-        printf("cmp_s %d\n", cmp_s);
-        printf("cmp_i %d\n", cmp_i);
+//        printf("cmp_s %d\n", cmp_s);
+//        printf("cmp_i %d\n", cmp_i);
         if (cmp_i != cmp && cmp_s != cmp)
             cmp_i = 1;
         if (cmp_s != cmp && cmp_i != cmp)
@@ -196,7 +201,7 @@ int find_biggest_runs(t_list *s_lst, int run)
         sup = 1;
         inf = 1;
     }
-    printf("max! %d\n", max);
+//    printf("max! %d\n", max);
     return (max);
 }
 
@@ -286,6 +291,24 @@ t_list *push_swap2(t_list *empty, t_list *s_lst, int i, int j, t_count *count)
     return (s_lst);
 }
 
+int cmp_first_a_last(t_list *s_lst, int cmp)
+{
+    int tmp;
+    int tmp2;
+
+    tmp = 0;
+    tmp2 = 0;
+    while (s_lst->prec)
+        s_lst = s_lst->prec;
+    tmp = s_lst->value;
+    while (s_lst->next)
+        s_lst = s_lst->next;
+    tmp2 = s_lst->value;
+    if (cmp < tmp && cmp > tmp2)
+        return (1);
+    return (0);
+}
+
 t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count)
 {
     int x;
@@ -294,49 +317,100 @@ t_list *push_swap(t_list *empty, t_list *s_lst, int i, int j, t_count *count)
     int max;
     int boolean;
     int index;
+    int counte;
+    int l;
+    int essai;
+    int last_ind;
 
+    essai = 0;
     boolean = -1;
+    l = 0;
     x = 0;
     k = j;
+    counte = 0;
+    last_ind = 0;
     count->index = 0;
     run = find_min_run(j);
     max = find_biggest_runs(s_lst, run);
     count->emp = 0;
     while (s_lst->prec)
         s_lst = s_lst->prec;
-    while (max > 1)
+    while (max > 2)
     {
         max = find_biggest_runs(s_lst, run);
-        printf("MAX %d\n", max);
+        printf("max %d\n", max);
+        index = find_index(run, empty, s_lst, max, j, count);
+        index = j - max - index;
+        printf("index %d\n", index);
         while (s_lst->prec)
             s_lst = s_lst->prec;
-        index = find_index(run, empty, s_lst, max, j, count);
-        printf("I N D E X %d\n", index);
-        while (index)
+        while (index && s_lst && s_lst->next)
         {
-            ft_ra(empty, s_lst);
+            while (s_lst->prec)
+                s_lst = s_lst->prec;
+            ft_rra(empty, s_lst);
             index--;
+        }
+        if (max == 2)
+            break ;
+        last_ind = max;
+        while (s_lst->prec)
+            s_lst = s_lst->prec;
+        while (last_ind && s_lst && s_lst->next)
+        {
+            while (s_lst->prec)
+            s_lst = s_lst->prec;
+            empty = ft_pa(empty, s_lst);
+            j--;
+            last_ind--;
+        }
+        if (empty)
+        {
+            while (empty->prec)
+                empty = empty->prec;
+            while (empty->next)
+            {
+                printf("empty %d\n", empty->value);
+                empty = empty->next;
+            }
+            printf("empty %d\n", empty->value);
+            while (empty->prec)
+                empty = empty->prec;
         }
         while (s_lst->prec)
             s_lst = s_lst->prec;
         while (s_lst->next)
         {
-            printf("s_lst value %d\n", s_lst->value);
+            printf("s_lst %d\n", s_lst->value);
             s_lst = s_lst->next;
         }
-        printf("s_lst value %d\n", s_lst->value);
+        printf("s_lst %d\n", s_lst->value);
         while (s_lst->prec)
             s_lst = s_lst->prec;
-        max = j - max;
-        while (max)
-        {
-            empty = push_biggest_runs(run, empty, s_lst, max, j, count);
-            max--;
-        }
     }
-    s_lst = push_run_to_a(max, empty, s_lst, k, j, count);
-    while (s_lst->prec)
-        s_lst = s_lst->prec;
+      /*  last_ind = j - max;
+        while (last_ind)
+        {
+            while (s_lst->prec)
+                s_lst = s_lst->prec;
+            empty = ft_pa(empty, s_lst);
+            last_ind--;
+            j--;
+        }
+        if (empty)
+        {
+            while (empty->prec)
+                empty = empty->prec;
+            while (empty->next)
+            {
+                printf("empty %d\n", empty->value);
+                empty = empty->next;
+            }
+            printf("empty %d\n", empty->value);
+            while (empty->prec)
+                empty = empty->prec;
+        }*/
+ //   }
     return (s_lst);
 }
 
@@ -448,6 +522,7 @@ int main(int ac, char **av)
     i = ac - 1;
     count = malloc(sizeof(t_count));
     empty = NULL;
+    count->max = 0;
 //    count->count = 0;
 //    lst = create_list(lst, value, i, av);
 //    empty = NULL;
@@ -456,10 +531,16 @@ int main(int ac, char **av)
     count->count = 0;
     s_lst = create_list(s_lst, value, i, av);
     if (ac - 1 > 4)
+    {
         s_lst = push_swap(empty, s_lst, 0, ac - 1, count);
+    }
     else
         s_lst = push_swap2(empty, s_lst, 0, ac - 1, count);
-    checker(s_lst);
+    if (!checker(s_lst))
+        write(1, "KO", 2);
+    else
+        write(1, "OK", 2);
+    printf("FINAL :");
     while (s_lst->prec)
         s_lst = s_lst->prec;
     while (s_lst->next)
